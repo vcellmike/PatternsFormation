@@ -1,6 +1,6 @@
 # PatternsFormation
 
-## Average Coverage in Each Cluster 
+### Average Coverage in Each Cluster 
 Cluster 0 = Mean 0
 
 Cluster 1 = Mean 255
@@ -15,7 +15,7 @@ Cluster 5 = 110.332 - 252.66
 
 Cluster 6 = 12.667 - 252.998
 
-## All column names and meanings
+### All column names and meanings
 
 
 
