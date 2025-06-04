@@ -1,6 +1,7 @@
 # PatternsFormation
 
 Cluster 0 = Mean 0
+
 Cluster 1 = Mean 255
 Cluster 2 = Mean .006 - 189
 Cluster 3 = Mean 59.351 - 141.68
