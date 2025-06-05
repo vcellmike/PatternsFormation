@@ -14,6 +14,8 @@
 ## TODO (for Tim)
  - Download ImageJ to undertand the actual parameters (eg. Feret_mean).
  - Use analyze menu
+ - Do visualizations from PowerPoint
+
 
 ### Average Coverage in Each Cluster 
 Cluster 0 = Mean 0
