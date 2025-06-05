@@ -5,6 +5,8 @@
  - What is aspect ratio? isn't the aspect ratio the same if we use the smae mesh?
  - What is solidity?
  - What inversion function was used to convert from value to value_inverse (eg. mean to mean_inverted)?
+        - my hypothosis that it was literally an inverse function (ie. reflect across y = x)
+ - ** NOTE: In order to better understand the relationships between to variables I plotted their values against each other (eg. mean and mean_inverted) ** 
  - What is the point of inversion? How does that contribute to the project?
 
 ### Average Coverage in Each Cluster 
@@ -43,7 +45,7 @@ Cluster 6 = 12.667 - 252.998
 
 **path** - Path to the file
 
-**seed** - ???
+**seed** - ???. Ranges from 3-23352.
 
 **dir** - Directory where the file is found
 
@@ -159,35 +161,35 @@ Cluster 6 = 12.667 - 252.998
 
 **Area_inverted_std** - Area inverted standard deviation.
 
-**X_inverted_mean** - 
+**X_inverted_mean** - ???
 
-**X_inverted_std**
+**X_inverted_std** - ???
 
-**Y_inverted_mean**
+**Y_inverted_mean** - ???
 
-**Y_inverted_std**
+**Y_inverted_std** - ???
 
-**Perim._inverted_mean**
+**Perim._inverted_mean** - Mean of perimeter inverted.
 
-**Perim._inverted_std**
+**Perim._inverted_std** - Standard deviation of perimeter inverted.
 
-**BX_inverted_mean**
+**BX_inverted_mean** - Inverted BX - value
 
-**BX_inverted_std**
+**BX_inverted_std** - ?? I cannot determine what BX_inverted is if I don't know what BX means.
 
-**BY_inverted_mean**
+**BY_inverted_mean** - See above.
 
-**BY_inverted_std**
+**BY_inverted_std** - See above.
 
-**Width_inverted_mean**
+**Width_inverted_mean** - Inverted width values. Could be y = x because the graph . 1.667 to 34.
 
-**Width_inverted_std**
+**Width_inverted_std** - Standard deviation values of widths.
 
-**Height_inverted_mean**
+**Height_inverted_mean** - Mean of inverted height-of-spots values. 
 
-**Height_inverted_std**
+**Height_inverted_std** - Standard deviation within the set of inverted height-of-spots values.
 
-**Major_inverted_mean**
+**Major_inverted_mean** - 
 
 **Major_inverted_std**
 
