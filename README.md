@@ -1,6 +1,6 @@
 # PatternsFormation
 
-### Questions I have
+### Questions I still have
  - What is a feret?
  - What is integrational density? How do you calculate it?
  - What is aspect ratio? isn't the aspect ratio the same if we use the smae mesh?
