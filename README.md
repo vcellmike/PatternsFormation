@@ -2,11 +2,13 @@
 
 ### Questions I have
  - What is a feret?
+ - What is integrational density? How do you calculate it?
  - What is aspect ratio? isn't the aspect ratio the same if we use the smae mesh?
  - What is solidity?
  - What inversion function was used to convert from value to value_inverse (eg. mean to mean_inverted)?
         - my hypothosis that it was literally an inverse function (ie. reflect across y = x)
- - ** NOTE: In order to better understand the relationships between to variables I plotted their values against each other (eg. mean and mean_inverted) ** 
+ - For inverted mean values, do we first find the mean and then invert it or do we first invert all values and find the mean of those. 
+ - **NOTE: In order to better understand the relationships between to variables I plotted their values against each other (eg. mean and mean_inverted)** 
  - What is the point of inversion? How does that contribute to the project?
 
 ### Average Coverage in Each Cluster 
@@ -101,7 +103,7 @@ Cluster 6 = 12.667 - 252.998
 
 **Angle_std** - Standard deviation of the mean ^^
 
-**Circ._mean** - Mean of circumference 
+**Circ._mean** - Mean of (???) circumference 
 
 **Circ._std** - Standard deviation of circumference
 
@@ -189,65 +191,65 @@ Cluster 6 = 12.667 - 252.998
 
 **Height_inverted_std** - Standard deviation within the set of inverted height-of-spots values.
 
-**Major_inverted_mean** - 
+**Major_inverted_mean** - Inverted values of "major". Meaning of "Major_mean" is unkown, therefore, Major_inverted_mean cannot be fully realized.
 
-**Major_inverted_std**
+**Major_inverted_std** - See above.
 
-**Minor_inverted_mean**
+**Minor_inverted_mean** - See above
 
-**Minor_inverted_std**
+**Minor_inverted_std** - See above.
 
-**Angle_inverted_mean**
+**Angle_inverted_mean** - See above.
 
-**Angle_inverted_std**
+**Angle_inverted_std** - See above.
 
-**Circ._inverted_mean**
+**Circ._inverted_mean** - Mean of inverted circumference (of spots?) values
 
-**Circ._inverted_std**
+**Circ._inverted_std** - Standard deviation of inverted circumference (of spots?) values
 
-**Feret_inverted_mean** - 
+**Feret_inverted_mean** - The inverted values of the mean of the feret diameter (distance between two parallel lines tangent to its boundary)
 
-**Feret_inverted_std**
+**Feret_inverted_std** - The inverted values of the standard deviation of the feret diameter (distance between two parallel lines tangent to its boundary)
 
-**IntDen_inverted_mean**
+**IntDen_inverted_mean** - Average integrated density 
 
-**IntDen_inverted_std**
+**IntDen_inverted_std** - Standard deviation of integrated density.
 
-**%Area_inverted_mean**
+**%Area_inverted_mean** - Cannot be determined.
 
-**%Area_inverted_std**
+**%Area_inverted_std** - Cannot be determined.
 
-**RawIntDen_inverted_mean**
+**RawIntDen_inverted_mean** - The mean of the inverted raw integrated density values in the imamge.
 
-**RawIntDen_inverted_std**
+**RawIntDen_inverted_std** - The standard deviation of the raw integrated density values in the image.
 
-**FeretX_inverted_mean**
+**FeretX_inverted_mean** - Mean of inverted feret x-coordinates.
 
-**FeretX_inverted_std**
+**FeretX_inverted_std** - Standard deviation of of inverted feret x-coordinates.
 
-**FeretY_inverted_mean**
+**FeretY_inverted_mean** - Mean of inverted feret y-coordinates.
 
-**FeretY_inverted_std**
+**FeretY_inverted_std** - Standard deviation of inverted feret y-coordinates.
 
-**FeretAngle_inverted_mean**
+**FeretAngle_inverted_mean** - Cannot be fully determined as I do not know what FeretAngle is.
 
-**FeretAngle_inverted_std**
+**FeretAngle_inverted_std** - See above.
 
-**MinFeret_inverted_mean**
+**MinFeret_inverted_mean** - Mean of the inverted values of the minimum feret diameters in the image.
 
-**MinFeret_inverted_std**
+**MinFeret_inverted_std** - Standard deviation of the inverted values of feret diameters in the image.
 
-**AR_inverted_mean**
+**AR_inverted_mean** - Mean of inverted aspect ratio values.
 
-**AR_inverted_std**
+**AR_inverted_std** - Standard dev. of inverted aspect ratio values.
 
-**Round_inverted_mean**
+**Round_inverted_mean** - Mean of inverted roundness values. 
 
-**Round_inverted_std**
+**Round_inverted_std** - Standard deviation of inverted roundness values.
 
-**Solidity_inverted_mean**
+**Solidity_inverted_mean** - Mean of inverted solidity values.
 
-**Solidity_inverted_std**
+**Solidity_inverted_std** - Standard deviation of inverted solidity values.
 
 **full_path** - The full path to the file
 
