@@ -1,5 +1,12 @@
 # PatternsFormation
 
+### Questions I have
+ - What is a feret?
+ - What is aspect ratio? isn't the aspect ratio the same if we use the smae mesh?
+ - What is solidity?
+ - What inversion function was used to convert from value to value_inverse (eg. mean to mean_inverted)?
+ - What is the point of inversion? How does that contribute to the project?
+
 ### Average Coverage in Each Cluster 
 Cluster 0 = Mean 0
 
@@ -48,7 +55,7 @@ Cluster 6 = 12.667 - 252.998
 
 **Median** - Median coverage in the figure. Can range from 0 (completely blank) to 255 (completely filled)
 
-**Area_mean** - Average area of detected objects (maybe spots).
+**Area_mean** - Average area of detected objects (maybe spots). Ranges from 1.0 to 40000.0. Max area is completely filled in. Grid is 200 by 200.
 
 **Area_std** - Standard Deviation of area
 
@@ -112,45 +119,47 @@ Cluster 6 = 12.667 - 252.998
 
 **RawIntDen_std** - Raw intensity standard deviation. (Raw intensity = sum of all pixel areaas)
 
-**FeretX_mean** - 
+**FeretX_mean** - Mean X Coordinate of the feret
 
-**FeretX_std** - 
+**FeretX_std** - Standard deviation of the X coordinate of the feret
 
-**FeretY_mean** - 
+**FeretY_mean** - Mean Y coordinate of the feret
 
-**FeretY_std** - 
+**FeretY_std** - Standard deviation of the Y coordinate of the feret
 
-**FeretAngle_mean** - 
+**FeretAngle_mean** - Mean feret (?) angle
 
-**FeretAngle_std** - 
+**FeretAngle_std** - Standard deviation of the feret angle
 
 **MinFeret_mean** - Average minimum feret diameter
 
 **MinFeret_std** - Minimum feret diameter standard deviation
 
-**AR_mean** - 
+**AR_mean** - Average aspect ratio
 
-**AR_std**
+**AR_std** - Aspect ratio standard deviation (?)
 
-**Round_mean**
+**Round_mean** - Average roundness 
 
-**Round_std**
+**Roundness = 4 · Area / (π · (Major axis)²))**
 
-**Solidity_mean**
+**Round_std** - Roundness standard deviation
 
-**Solidity_std**
+**Solidity_mean** - Average solidity (what is solidity?). Rnages from 0.4074 to 1.0.
 
-**num_spots_inverted**
+**Solidity_std** - Solidity standard variation.
 
-**Mean_inverted**
+**num_spots_inverted** - Num_spots is inverted through some kind of function similair to a / (x + b) where a and b are constants.
 
-**Median_inverted**
+**Mean_inverted** - Mean coverage inverted through an equation (see num_spots_inverted)
 
-**Area_inverted_mean**
+**Median_inverted** - Median coverage inverted (see above).
 
-**Area_inverted_std**
+**Area_inverted_mean** - Average area of detected objects inverted. Ranges from 1.0 to 40,000 as Area_mean.
 
-**X_inverted_mean**
+**Area_inverted_std** - Area inverted standard deviation.
+
+**X_inverted_mean** - 
 
 **X_inverted_std**
 
