@@ -11,6 +11,10 @@
  - **NOTE: In order to better understand the relationships between to variables I plotted their values against each other (eg. mean and mean_inverted)** 
  - What is the point of inversion? How does that contribute to the project?
 
+## TODO
+ - Download ImageJ to undertand the actual parameters (eg. Feret_mean).
+ - Use analyze menu
+
 ### Average Coverage in Each Cluster 
 Cluster 0 = Mean 0
 
