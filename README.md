@@ -10,6 +10,7 @@
  - For inverted mean values, do we first find the mean and then invert it or do we first invert all values and find the mean of those. 
  - **NOTE: In order to better understand the relationships between to variables I plotted their values against each other (eg. mean and mean_inverted)** 
  - What is the point of inversion? How does that contribute to the project?
+ - Last codeblock in Toybox: does the number correspond w/ the name of the filename or does it just signify the image's position in the dataframe?
 
 ## TODO (for Tim)
  - Download ImageJ to undertand the actual parameters (eg. Feret_mean).
