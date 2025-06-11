@@ -19,6 +19,7 @@
 ## Observations/Ideas
  - I noticed that some blocks of code are dependant on other blocks a lot. (see code block 00A and dependents). A lot of the time I will forget at first that one code block is dependent on another one two blocks back and will try to solve an error when all I should've done was executed another code block.
  - Maybe, there is a way to streamline the code so that most/all the dependencies are there. OR, just annnotate the code better (I could do either) so that this doesn't occur.
+ - Something strange (?) is occuring with the bar graphs.
 
 ### Average Coverage in Each Cluster 
 Cluster 0 = Mean 0
