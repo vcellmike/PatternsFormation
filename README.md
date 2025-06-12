@@ -1,13 +1,19 @@
 # PatternsFormation
 
+https://imagej.net/ij/docs/menus/analyze.html 
+
 ### Questions I still have
  - What is a feret?
+The distance across a shape if it's non-circular. 
  - What is integrational density? How do you calculate it?
- - What is aspect ratio? isn't the aspect ratio the same if we use the smae mesh?
+Correlates density and area. Sum of all pixels in an area. 0-255 * # of pixels
+ - What is aspect ratio? isn't the aspect ratio the same if we use the same mesh?
+Average aspect ratio of all spots.
  - What is solidity?
+Holes in the spots. 1 for most images.
  - What inversion function was used to convert from value to value_inverse (eg. mean to mean_inverted)?
-        - my hypothosis that it was literally an inverse function (ie. reflect across y = x)
- - For inverted mean values, do we first find the mean and then invert it or do we first invert all values and find the mean of those. 
+    - ImageJ values weren't fully descriptive. Similair features at completely different patterns. 
+    - Light to dark and vice versa was the inversion algorithm.
  - **NOTE: In order to better understand the relationships between to variables I plotted their values against each other (eg. mean and mean_inverted)** 
  - What is the point of inversion? How does that contribute to the project?
  - Last codeblock in Toybox: does the number correspond w/ the name of the filename or does it just signify the image's position in the dataframe?
@@ -16,9 +22,17 @@
  - Download ImageJ to undertand the actual parameters (eg. Feret_mean).
  - Use analyze menu
  - Do visualizations from PowerPoint
+ - Remake the box plot from pg. 13 on the pdf
+          - min and max, 25th, 75th
+
+## Todo (general)
+ - Recap. the CNN code
+ - How we process the synthetic and experimental images
+ - Take experimental images and make them amenable to the CNN
 
 ## Observations/Ideas
- - I noticed that some blocks of code are dependant on other blocks a lot. (see code block 00A and dependents). A lot of the time I will forget at first that one code block is dependent on another one two blocks back and will try to solve an error when all I should've done was executed another code block.
+ - All features were chosen
+ - I noticed that some blocks and code are dependant on other blocks a lot. (see code block 00A and dependents). A lot of the time I will forget at first that one code block is dependent on another one two blocks back and will try to solve an error when all I should've done was executed another code block.
  - Maybe, there is a way to streamline the code so that most/all the dependencies are there. OR, just annnotate the code better (I could do either) so that this doesn't occur.
  - Something strange (?) is occuring with the bar graphs.
 
