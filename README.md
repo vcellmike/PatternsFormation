@@ -2,29 +2,6 @@
 
 https://imagej.net/ij/docs/menus/analyze.html 
 
-### Questions I still have
- - What is a feret?
-The distance across a shape if it's non-circular. 
- - What is integrational density? How do you calculate it?
-Correlates density and area. Sum of all pixels in an area. 0-255 * # of pixels
- - What is aspect ratio? isn't the aspect ratio the same if we use the same mesh?
-Average aspect ratio of all spots.
- - What is solidity?
-Holes in the spots. 1 for most images.
- - What inversion function was used to convert from value to value_inverse (eg. mean to mean_inverted)?
-    - ImageJ values weren't fully descriptive. Similair features at completely different patterns. 
-    - Light to dark and vice versa was the inversion algorithm.
- - **NOTE: In order to better understand the relationships between to variables I plotted their values against each other (eg. mean and mean_inverted)** 
- - What is the point of inversion? How does that contribute to the project?
- - Last codeblock in Toybox: does the number correspond w/ the name of the filename or does it just signify the image's position in the dataframe?
-
-## TODO (for Tim)
- - Download ImageJ to undertand the actual parameters (eg. Feret_mean).
- - Use analyze menu
- - Do visualizations from PowerPoint
- - Remake the box plot from pg. 13 on the pdf
-          - min and max, 25th, 75th
-
 ## Todo (general)
  - Recap. the CNN code
  - How we process the synthetic and experimental images
