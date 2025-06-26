@@ -13,20 +13,23 @@ https://imagej.net/ij/docs/menus/analyze.html
  - Maybe, there is a way to streamline the code so that most/all the dependencies are there. OR, just annnotate the code better (I could do either) so that this doesn't occur.
  - Something strange (?) is occuring with the bar graphs.
 
+### Programing tasks
+- Divide 
+
 ### Average Coverage in Each Cluster 
-Cluster 0 = Mean 0
+Cluster 0 = Mean 0 - images that no pattern 
 
-Cluster 1 = Mean 255
+Cluster 1 = Mean 255 - complete coverage
 
-Cluster 2 = Mean .006 - 189
+Cluster 2 = Mean .006 - 189 - small spots
 
-Cluster 3 = Mean 59.351 - 141.68
+Cluster 3 = Mean 59.351 - 141.68 - long spots
 
-Cluster 4 = 11.892 - 254.987
+Cluster 4 = 11.892 - 254.987 - 
 
-Cluster 5 = 110.332 - 252.66
+Cluster 5 = 110.332 - 252.66 - 
 
-Cluster 6 = 12.667 - 252.998
+Cluster 6 = 12.667 - 252.998 - 
 
 ### All column names and meanings
 **Ua** - Degradation rate for NEGAN
@@ -154,6 +157,8 @@ Cluster 6 = 12.667 - 252.998
 **Solidity_mean** - Average solidity (what is solidity?). Rnages from 0.4074 to 1.0.
 
 **Solidity_std** - Solidity standard variation.
+
+### Features of inverted images ###
 
 **num_spots_inverted** - Num_spots is inverted through some kind of function similair to a / (x + b) where a and b are constants.
 
