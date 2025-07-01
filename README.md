@@ -3,18 +3,13 @@
 https://imagej.net/ij/docs/menus/analyze.html 
 
 ## Todo (general)
+ - Run CNN w/o transformations to see if accuracy increases
  - Recap. the CNN code
  - How we process the synthetic and experimental images
  - Take experimental images and make them amenable to the CNN
 
-## Observations/Ideas
- - All features were chosen
- - I noticed that some blocks and code are dependant on other blocks a lot. (see code block 00A and dependents). A lot of the time I will forget at first that one code block is dependent on another one two blocks back and will try to solve an error when all I should've done was executed another code block.
- - Maybe, there is a way to streamline the code so that most/all the dependencies are there. OR, just annnotate the code better (I could do either) so that this doesn't occur.
- - Something strange (?) is occuring with the bar graphs.
-
 ### Programing tasks
-- Divide 
+- Divide toybox - complete
 
 ### Average Coverage in Each Cluster 
 Cluster 0 = Mean 0 - images that no pattern 
