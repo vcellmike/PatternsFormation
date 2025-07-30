@@ -2,14 +2,8 @@
 
 https://imagej.net/ij/docs/menus/analyze.html 
 
-## Todo (general)
- - Run CNN w/o transformations to see if accuracy increases
- - Recap. the CNN code
- - How we process the synthetic and experimental images
- - Take experimental images and make them amenable to the CNN
-
-### Programing tasks
-- Divide toybox - complete
+### "Working" Folder
+The folder titled Working contains working copies of all data, notebooks, python files.
 
 ### Average Coverage in Each Cluster 
 Cluster 0 = Mean 0 - images that no pattern 
