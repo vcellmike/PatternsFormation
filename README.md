@@ -4,7 +4,7 @@ https://imagej.net/ij/docs/menus/analyze.html
 
 ### "Working" Folder
 The folder titled Working contains working copies of all data, notebooks, python files.
- - Toybox was too large for github upload. Therefore, it was split into two files: "Data_loader" and "Visualizations_and_misc"
+ - Toybox was too large for github upload. Therefore, it was split into two files: "Data_loader" "PCA" and "visualizations". When running either visualizations or PCA, run data_Loader first to get the full compressed feats_df. 
 
 ### Average Coverage in Each Cluster 
 Cluster 0 = Mean 0 - images that no pattern 
