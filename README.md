@@ -2,6 +2,14 @@
 
 https://imagej.net/ij/docs/menus/analyze.html 
 
+## NN Todo
+ - consolidate everything into one python file (save as python file)
+ - try running locally on small subset of data (500 images)
+              - run through terminal
+ - save performance matrix (train/test data), model
+ - then, once everything works, upload to cluster
+ - by next week, have a working script that can be running on the cluster
+
 ### "Working" Folder
 The folder titled Working contains working copies of all data, notebooks, python files.
  - Toybox was too large for github upload. Therefore, it was split into two files: "Data_loader" "PCA" and "visualizations". When running either visualizations or PCA, run data_Loader first to get the full compressed feats_df. 
