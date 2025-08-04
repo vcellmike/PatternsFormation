@@ -6,6 +6,4 @@ Python files.
 - PCA 
 - visualizations. 
 
-When running either visualizations or PCA, run data_Loader first to get the full compressed feats_df. 
-
-
+Visualizations and PCA are both runable on their own. Run data_Loader to unzip data files (eg. Generated_Images_7-2-24.
