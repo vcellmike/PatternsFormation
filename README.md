@@ -2,8 +2,6 @@
 
 https://imagej.net/ij/docs/menus/analyze.html 
 
-## General Todo
- - Label data files
 ## NN Todo
  - consolidate everything into one python file (save as python file)
  - try running locally on small subset of data (500 images)
