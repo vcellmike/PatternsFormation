@@ -97,9 +97,7 @@ Complete Count:
 
 ### Visualization 
 
-
 ### PCA
-This file does clustering. It outputs several graphs that cluster all 30,000+ datapoints into 7 clusters based on PCA of 
-
+This file does clustering. It outputs several graphs that cluster all 30,000+ datapoints into 7 clusters based on PCA of columns 13-111. It outputs one 2d graph and one 3d graph that show clustering based on the PC1, PC2, and PC3 axes.
 
 ## CNN Classifier
