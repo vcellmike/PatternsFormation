@@ -20,5 +20,79 @@ Visualizations and PCA are both runable on their own. Run data_Loader to unzip d
  - 2025-05-24_feats_df_toybox.pkl contains a serialized dataframe with shape 27515 rows × 113 columns. This is the dataframe used by Data Loader, PCA, and Visualizations.
  - 2024-08-15_manual_classification.pkl contains a serialized dataframe with shape 7307 rows × 5 columns. It encodes class, noise, path, seed dir. This is the pickle file used in the NN notebook/python file.
 
-## Algorithms
-The algorithm used was a convolutional neural netowrk that classified images into classes by clustering them. A dataframe inside a pickle file for clustering was created that included the filename and class. The algorithm split the data into training, test, and validating data. Finally, a confusion matrix was created to represent the accuracy of the model in classifying an image into the correct class.
+
+# Algorithms
+## To_Silico_Conversion
+
+**Silico = Generated/synthesized image reduced down to be analyzed 
+
+To Silico Conversion takes an input of a zip file with real images in it. The images are photographs of real monkeyflowers. The python file attempts to convert each file into a silico representation to be analyzed by PCA, visualization, or fed through the NN classifier.
+
+## Dependencies:
+ - Specific dependencies include PILLOW, PILLOW.Image, and PILLOW.ImageEnhance
+
+### Steps:
+1. The program unzips "real_images_6-29-25.zip" and extracts the contents to a folder within content. The images should be numbered from 1-N.png.
+2. The program loops through all contents in the extracted folder and adds the file paths to a dataframe of N rows by 2 columns (path, path_truncated).
+3. The program loops through each path in the dataframe, pulls it with pull_from_df (see comments in program) and applies a function round_pixels_by_intensity to each (see inputs in python file).
+4. The round_pixels_by_intensity takes a threshold and contrast True/False value. Each pixel in the image is either set to (0,0,0) or (255, 255, 255) depending on whether it is greater than or less than the threshold. If the pixel intensity is less than the threshold, intensity is set to 0. If it is greater, than it is set to 255.
+5. If enhance is true, then the program uses ImageEnhance to increase the contrast of the image by a contrast value set by "contrast_factor".
+6. The image outputs the original image, the enhanced/unenhanced image, and then the final grayscale image. 
+
+### To Run:
+In the main part of the program run:
+to_silico(number_of_file*, enhance=True, contrast_factor=1.2 , threshold=162)
+* number_of_file corresponds with the number in the filename. eg. 7.png
+You can adjust the parameters to see if a more effective in_silico conversion can be made.
+
+### Current Status/Results
+
+Currently, the results are not effective enough. The outputed photos are either over or underexposed in the majority of cases. Work is also being done to adopt the To Silico Conversion to the github environment in so far as changes in the filestructure being reflected in the code. 
+
+Below are the current statuses of the images.
+
+Blackwashed = too dark (ie. pigment is overexpressed)
+
+Whitewashed = too light (ie. pigment is underexpressed)
+
+1.png - Satisfactory
+
+2 - Satisfactory
+
+3 - Blackwashed
+
+4 - Blackwashed
+
+5- Whitewashed
+
+6 - Misc.
+
+7 - Satisfactory
+
+8 - Blackwashed
+
+9 - Whitewashed
+
+10 - Blackwashed (detects 1 spot that does not exist)
+
+11 - Blackwashed
+
+12 - Blackwashed
+
+13 - Blackwashed
+
+Complete Count:
+
+    6/13 - Blackwashed
+    3/13 - Whitewashed
+    3/13 - Satisfactory
+    1/13 - Miscellaneous issues
+
+### Next Steps:
+ - Filestructure adaptation
+ - Ensuring runability from Github. 
+ - Using a CNN to segment each image. 
+
+## Toybox
+
+## CNN Classifier
