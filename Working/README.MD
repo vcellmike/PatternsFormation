@@ -21,4 +21,4 @@ Visualizations and PCA are both runable on their own. Run data_Loader to unzip d
  - 2024-08-15_manual_classification.pkl contains a serialized dataframe with shape 7307 rows × 5 columns. It encodes class, noise, path, seed dir. This is the pickle file used in the NN notebook/python file.
 
 ## Algorithms
-The algorithm used was a convolutional neural netowrk that classified images into classes by clustering them. A dataframe inside a pickle file for clustering was created that included the filename and class. The algorithm split the data into training, test, and validating data. Finally, a confusion matrix was created to represent the accuracy of the model in classifying an image into the correct class.
+ - To_Silico_Conversion.ipynb - 
