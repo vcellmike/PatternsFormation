@@ -24,6 +24,8 @@ Visualizations and PCA are both runable on their own. Run data_Loader to unzip d
 # Algorithms
 ## To_Silico_Conversion
 
+**Silico = Generated/synthesized image reduced down to be analyzed 
+
 To Silico Conversion takes an input of a zip file with real images in it. The images are photographs of real monkeyflowers. The python file attempts to convert each file into a silico representation to be analyzed by PCA, visualization, or fed through the NN classifier.
 
 ## Dependencies:
@@ -36,6 +38,12 @@ To Silico Conversion takes an input of a zip file with real images in it. The im
 4. The round_pixels_by_intensity takes a threshold and contrast True/False value. Each pixel in the image is either set to (0,0,0) or (255, 255, 255) depending on whether it is greater than or less than the threshold. If the pixel intensity is less than the threshold, intensity is set to 0. If it is greater, than it is set to 255.
 5. If enhance is true, then the program uses ImageEnhance to increase the contrast of the image by a contrast value set by "contrast_factor".
 6. The image outputs the original image, the enhanced/unenhanced image, and then the final grayscale image. 
+
+### To Run:
+In the main part of the program run:
+to_silico(number_of_file*, enhance=True, contrast_factor=1.2 , threshold=162)
+* number_of_file corresponds with the number in the filename. eg. 7.png
+You can adjust the parameters to see if a more effective in_silico conversion can be made.
 
 ### Current Status/Results
 
