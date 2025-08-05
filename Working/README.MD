@@ -93,6 +93,13 @@ Complete Count:
  - Ensuring runability from Github. 
  - Using a CNN to segment each image. 
 
-## Toybox
+## Toybox 
+
+### Visualization 
+
+
+### PCA
+This file does clustering. It outputs several graphs that cluster all 30,000+ datapoints into 7 clusters based on PCA of 
+
 
 ## CNN Classifier
