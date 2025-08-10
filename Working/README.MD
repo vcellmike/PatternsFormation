@@ -28,7 +28,7 @@ Visualizations and PCA are both runable on their own. Run data_Loader to unzip d
 
 To Silico Conversion takes an input of a zip file with real images in it. The images are photographs of real monkeyflowers. The python file attempts to convert each file into a silico representation to be analyzed by PCA, visualization, or fed through the NN classifier.
 
-## Dependencies:
+### Dependencies:
  - Specific dependencies include PILLOW, PILLOW.Image, and PILLOW.ImageEnhance ???
 
 ### Steps:
