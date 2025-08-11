@@ -28,13 +28,13 @@ Visualizations and PCA are both runable on their own. Run data_Loader to unzip d
 
 To Silico Conversion takes an input of a zip file with real images in it. The images are photographs of real monkeyflowers. The python file attempts to convert each file into a silico representation to be analyzed by PCA, visualization, or fed through the NN classifier.
 
-## Dependencies:
- - Specific dependencies include PILLOW, PILLOW.Image, and PILLOW.ImageEnhance
+### Dependencies:
+ - Specific dependencies include PILLOW, PILLOW.Image, and PILLOW.ImageEnhance ???
 
 ### Steps:
-1. The program unzips "real_images_6-29-25.zip" and extracts the contents to a folder within content. The images should be numbered from 1-N.png.
-2. The program loops through all contents in the extracted folder and adds the file paths to a dataframe of N rows by 2 columns (path, path_truncated).
-3. The program loops through each path in the dataframe, pulls it with pull_from_df (see comments in program) and applies a function round_pixels_by_intensity to each (see inputs in python file).
+1. Unzip "real_images_6-29-25.zip" and extract images to a folder within the content folder. The images should be numbered from 1-N.png.
+2. Iterate over all images in the extracted folder and adds the file paths to a dataframe of N rows by 2 columns (path, path_truncated).
+3. Iterate over each path in the dataframe, pull it with pull_from_df (see comments in program), and apply a function round_pixels_by_intensity to each (see inputs in python file).
 4. The round_pixels_by_intensity takes a threshold and contrast True/False value. Each pixel in the image is either set to (0,0,0) or (255, 255, 255) depending on whether it is greater than or less than the threshold. If the pixel intensity is less than the threshold, intensity is set to 0. If it is greater, than it is set to 255.
 5. If enhance is true, then the program uses ImageEnhance to increase the contrast of the image by a contrast value set by "contrast_factor".
 6. The image outputs the original image, the enhanced/unenhanced image, and then the final grayscale image. 
