@@ -1,6 +1,8 @@
 # Todo:
- - Change Dir --> Images
- - Replace in Readme
+ - Change Dir --> Images - Done
+ - Replace in Readme - Done
+ - Replace in all pickle files - Done
+ - Ensure runability
 
 # Workflow
 
