@@ -1,23 +1,27 @@
+# Todo:
+ - Change Dir --> Images
+ - Replace in Readme
+
 # Workflow
 
 The folder titled Working contains working copies of all data, notebooks, 
 Python files.
 - Data_loader 
 - PCA 
-- visualizations. 
+- Visualizations
 
-Visualizations and PCA are both runable on their own. Run data_Loader to unzip data files (eg. Generated_Images_7-2-24.
+Visualizations and PCA are both runable on their own. Run data_Loader to unzip data files (eg. Generated_Images_7-2-24).
 
 ## Image-Containing Zip Files
  - 05-09-2024_all_images.zip contains 15,133 images in png format, generated using VCell software using the same initial distribution of A protein (noise).
- - Generated Images.zip contains 4,523 images generated using VCell software using 5 different initial distributions of A proteins, called noise3 (598 images), noise4 (927 images), noise5 (999 images), noise6 (1,000 images), noise7 (999 images)
+ - Generated Images.zip contains 4,523 images generated using VCell software using 5 different ireinitial distributions of A proteins, called noise3 (598 images), noise4 (927 images), noise5 (999 images), noise6 (1,000 images), noise7 (999 images)
  - Generated Images 7-2-24 contains 19,858 images in png format, generated using VCell software using 5 different initial distributions of A proteins, called noise 3 (4,000 images), noise 4 (3,900 images), noise 5 (3,965 images), noise 6 (3,993 images), noise 7 (4,000 images)
  - real_images_6-29-25 contains 13 photographs of real monkeyflowers. This data is to be used for To Silico conversion.
 
 ## Data Files
  - Copy of 2024-08-18_curr_df.pkl contains a serialized Pandas dataframe with 32210 rows × 8 columns. It encodes noise, class, path variables (path, dir), seed, predicted class, pc1, and pc2.
  - Copy of 2024-08-19_feats_df_narrow.pkl contains a serialized dataframe with 33770 rows × 111 columns. It encodes 111 columns (features, file information, parameters etc)
- - 2025-05-24_feats_df_toybox.pkl contains a serialized dataframe with shape 27515 rows × 113 columns. This is the dataframe used by Data Loader, PCA, and Visualizations.
+ - Images_Classified.pkl contains a serialized dataframe with shape 27515 rows × 113 columns. This is the dataframe used by Data Loader, PCA, and Visualizations. Thsis file is the result of a classifier that yielded the classifier_pred_class value.
  - 2024-08-15_manual_classification.pkl contains a serialized dataframe with shape 7307 rows × 5 columns. It encodes class, noise, path, seed dir. This is the pickle file used in the NN notebook/python file.
 
 
@@ -28,13 +32,13 @@ Visualizations and PCA are both runable on their own. Run data_Loader to unzip d
 
 To Silico Conversion takes an input of a zip file with real images in it. The images are photographs of real monkeyflowers. The python file attempts to convert each file into a silico representation to be analyzed by PCA, visualization, or fed through the NN classifier.
 
-## Dependencies:
- - Specific dependencies include PILLOW, PILLOW.Image, and PILLOW.ImageEnhance
+### Dependencies:
+ - Specific dependencies include PILLOW, PILLOW.Image, and PILLOW.ImageEnhance ???
 
 ### Steps:
-1. The program unzips "real_images_6-29-25.zip" and extracts the contents to a folder within content. The images should be numbered from 1-N.png.
-2. The program loops through all contents in the extracted folder and adds the file paths to a dataframe of N rows by 2 columns (path, path_truncated).
-3. The program loops through each path in the dataframe, pulls it with pull_from_df (see comments in program) and applies a function round_pixels_by_intensity to each (see inputs in python file).
+1. Unzip "real_images_6-29-25.zip" and extract images to a folder within the content folder. The images should be numbered from 1-N.png.
+2. Iterate over all images in the extracted folder and adds the file paths to a dataframe of N rows by 2 columns (path, path_truncated).
+3. Iterate over each path in the dataframe, pull it with pull_from_df (see comments in program), and apply a function round_pixels_by_intensity to each (see inputs in python file).
 4. The round_pixels_by_intensity takes a threshold and contrast True/False value. Each pixel in the image is either set to (0,0,0) or (255, 255, 255) depending on whether it is greater than or less than the threshold. If the pixel intensity is less than the threshold, intensity is set to 0. If it is greater, than it is set to 255.
 5. If enhance is true, then the program uses ImageEnhance to increase the contrast of the image by a contrast value set by "contrast_factor".
 6. The image outputs the original image, the enhanced/unenhanced image, and then the final grayscale image. 
@@ -105,9 +109,9 @@ This file does clustering. It outputs several graphs that cluster all 30,000+ da
 The algorithm takes a pickle file titled manual_classification.pkl containing 7304 rows and 5 columns (class, noise, path, dir, seed) as input. It unzips zip files within content containing images. The algorithm then checks for non-int/missing class values as well as paths that do not exist. Presently, no such paths or class values exist. 
 
 ### # of Images Within Each Directory
-Dir1: 3728 Images
-Dir2: 837 Images
-Dir3: 2742 Images
+Images1: 3728 Images
+Images2: 837 Images
+Images3: 2742 Images
 Total: 7307 Images
 
 ### Directory Name Change Steps:
@@ -116,9 +120,9 @@ Total: 7307 Images
 3. Change all folder names within ALL pickle files
 
 ### Schema
-Generated_Images_7-2-24 --> Dir1.zip
-Generated_Images --> Dir2.zip
-05-09-2024_all_images.zip --> Dir3.zip
+Generated_Images_7-2-24 --> Images1.zip
+Generated_Images --> Images2.zip
+05-09-2024_all_images.zip --> Images3.zip
 real_images_6-29-25.zip --> RealImages.zip
 
 
