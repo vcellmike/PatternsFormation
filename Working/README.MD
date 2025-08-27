@@ -1,14 +1,11 @@
-# Todo:
- - Change Dir --> Images - Done
- - Replace in Readme - Done
- - Replace in all pickle files - Done
- - Ensure runability
+# Future:
+ - Look at distribution of parameters within each cluster (normal, random etc)
 
 # Workflow
 
 The folder titled Working contains working copies of all data, notebooks, 
 Python files.
-- Data_loader 
+- Data_loader
 - PCA 
 - Visualizations
 
@@ -106,7 +103,9 @@ Complete Count:
 ### Visualization 
 
 #### Boxplots
-The boxplot is generated to visualize parameter values. The function used is pyplot.boxplot. The boxes extend to 25th percentile and 75th percentile of the data. IQR = Q3 - Q1. The whiskers extend to:
+The boxplot is generated to visualize parameter values. The function used is pyplot.boxplot. The boxes extend to 25th percentile and 75th percentile of the data. IQR = 
+Uses median. 
+Q3 - Q1. The whiskers extend to:
  - **leftmost whisker**: extends to Q1 - (1.5 * IQR)
  - **rightmost whisker**: extends to Q3 + (1.5 * IQR)
 
