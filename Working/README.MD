@@ -128,11 +128,7 @@ Total: 7307 Images
 3. Change all folder names within ALL pickle files
 
 ### Schema
-Generated_Images_7-2-24 --> Images1.zip
-
-Generated_Images --> Images2.zip
-
-05-09-2024_all_images.zip --> Images3.zip
+schema = {'/content/Generated_Images_7-2-24/' : '/content/Images1/', '/content/Generated Images/' : '/content/Images2/', '/content/05-09-2024_all_images/' : '/content/Images3/'}
 
 real_images_6-29-25.zip --> RealImages.zip
 

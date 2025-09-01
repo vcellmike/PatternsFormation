@@ -1,14 +1,11 @@
-# Todo:
- - Change Dir --> Images - Done
- - Replace in Readme - Done
- - Replace in all pickle files - Done
- - Ensure runability
+# Future:
+ - Look at distribution of parameters within each cluster (normal, random etc)
 
 # Workflow
 
 The folder titled Working contains working copies of all data, notebooks, 
 Python files.
-- Data_loader 
+- Data_loader
 - PCA 
 - Visualizations
 
@@ -106,7 +103,9 @@ Complete Count:
 ### Visualization 
 
 #### Boxplots
-The boxplot is generated to visualize parameter values. The function used is pyplot.boxplot. The boxes extend to 25th percentile and 75th percentile of the data. IQR = Q3 - Q1. The whiskers extend to:
+The boxplot is generated to visualize parameter values. The function used is pyplot.boxplot. The boxes extend to 25th percentile and 75th percentile of the data. IQR = 
+Uses median. 
+Q3 - Q1. The whiskers extend to:
  - **leftmost whisker**: extends to Q1 - (1.5 * IQR)
  - **rightmost whisker**: extends to Q3 + (1.5 * IQR)
 
@@ -129,11 +128,7 @@ Total: 7307 Images
 3. Change all folder names within ALL pickle files
 
 ### Schema
-Generated_Images_7-2-24 --> Images1.zip
-
-Generated_Images --> Images2.zip
-
-05-09-2024_all_images.zip --> Images3.zip
+schema = {'/content/Generated_Images_7-2-24/' : '/content/Images1/', '/content/Generated Images/' : '/content/Images2/', '/content/05-09-2024_all_images/' : '/content/Images3/'}
 
 real_images_6-29-25.zip --> RealImages.zip
 
