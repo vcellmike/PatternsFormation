@@ -1,0 +1,6 @@
+- Data folder contain the following data:
+    - Images_Classified.pkl is the dataframe that ...
+    - all_mages.zip is the folder that contain images that we will work with
+
+- Data_load.ipynb prepares for the data handling. It installs all required packages
+- PCA.ipynb ...
