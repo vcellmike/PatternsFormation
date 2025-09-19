@@ -6,6 +6,8 @@ https://drive.google.com/file/d/1Hvb_hEGr7CjN-OoM3hI-OxqM-EL7zM8x/view
 
 https://drive.google.com/drive/folders/10NZYAhAIy7SbCftCvEtM5ZSiL3hClK7l
 
+https://drive.google.com/drive/folders/17LalvXG-7TFfHqjefpbAsaKASLiN72bm
+
 ## NN Todo
  - consolidate everything into one python file (save as python file)
  - try running locally on small subset of data (500 images)
