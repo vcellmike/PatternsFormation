@@ -1,0 +1,3 @@
+ ,Label,Area,Mean,StdDev,Mode,Min,Max,X,Y,XM,YM,Perim.,BX,BY,Width,Height,Major,Minor,Angle,Circ.,Feret,IntDen,Median,Skew,Kurt,%Area,RawIntDen,FeretX,FeretY,FeretAngle,MinFeret,AR,Round,Solidity
+1,mpar_rto(c-c)_(green)_(0-137).tif,40000,231.521,73.730,255,0,255,100.000,100.000,99.125,98.020,800.000,0,0,200,200,225.676,225.676,0.000,0.785,282.843,9260835,255,-2.822,5.962,90.793,9260835,0,0,135,200,1.000,1.000,1.000
+2,mpar_rto(c-c)_(green)_(0-137).tif,36317,255.000,0.000,255,255,255,99.125,98.020,99.125,98.020,810.728,0,0,200,200,216.098,213.978,6.379,0.694,282.843,9260835,255,NaN,NaN,100.000,9260835,0,0,135,200,1.010,0.990,0.908
