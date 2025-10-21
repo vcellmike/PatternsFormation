@@ -4,7 +4,7 @@ import pickle, pandas as pd, numpy as np
 from pathlib import Path
 
 # Path to your NumPy-2 pickle
-pkl = Path("./data/data_old/2024-08-19_feats_df_narrow.pkl")
+pkl = Path("./data/Images_Classified_NN_cl6.pkl")
 
 with pkl.open("rb") as f:
     obj = pickle.load(f)
