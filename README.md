@@ -85,13 +85,8 @@ Cluster 6 = 12.667 - 252.998 -
 
 **Perim._std** - Standard deviation of perimeter of spots
 
-**BX_mean** - ???
-
-**BX_std** - ???
-
-**BY_mean** - ???
-
-**BY_std** - ???
+**BX_mean**, **BX_std**,  **BY_mean**, **BY_std**  - bounding-rectangle origin
+Mean and SD of the X (BX) and Y (BY) coordinates of the upper-left corner of the minimal axis-aligned bounding rectangle around each object; useful for coarse localization. 
 
 **Width_mean** - Mean of spot width
 
