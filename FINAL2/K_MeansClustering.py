@@ -4,14 +4,20 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import pickle
+import sys
 
 print("All dependencies present")
 
 # %%
 #load in dataframe
 pd.set_option('display.max_columns', None)
+option_print = True
 seed_val= 42
 file_in = "FINAL2/data/unclassified_features_39517"
+
+# save output to txt file
+sys.stdout = open(file_in+'_output.txt', 'w')  # redirect print() output
+sys.stderr = sys.stdout
 
 with open(file_in+'.pkl', 'rb') as f:
   feats_df = pickle.load(f) # deserialize using load()
@@ -77,8 +83,7 @@ fig, ax = plt.subplots()
 ax.set(xlabel = "Number of Clusters", ylabel = "SSE", xticks = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])
 
 ax.plot(sse)
-
-plt.show()
+#plt.show()
 
 # %%
 num_clusters = 7
@@ -121,11 +126,11 @@ for j in clusters:
 leg = ax.legend(loc="lower left")
 ax.set(xlabel = "PC1", ylabel = "PC2", title = "Clustering of Intuitive Features")
 
-option_print = True
+#option_print = True
 if option_print:
   plt.savefig("FINAL2/output_images/KMeansClustering_of_Intuitive_Features_cl7.png", dpi = 300)
 
-plt.show()
+#plt.show()
 
 feats_df.head()
 
@@ -189,8 +194,8 @@ for i in range(num_imgs):
 fig.set_figwidth(5*len(cluster_dfs))
 fig.set_figheight(5 * num_imgs)
 
-option_print = True
+#option_print = True
 if option_print:
   plt.savefig("FINAL2/output_images/KMeansClustering_ImagesPerCluster_cl7_.png", dpi = 300)
 
-plt.show()
+#plt.show()
