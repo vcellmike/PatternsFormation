@@ -1,0 +1,51 @@
+(39517, 111)
+(39517, 95)
+[0.40335025 0.24936881]
+PCA Loadings:
+         PC1       PC2
+0   0.063943  0.102919
+1  -0.020598 -0.123470
+2  -0.022217 -0.141839
+3  -0.120494 -0.134209
+4   0.088172 -0.078721
+..       ...       ...
+90 -0.116973  0.128303
+91  0.098154 -0.048375
+92  0.076827 -0.074302
+93  0.096977 -0.094048
+94 -0.124029  0.111705
+
+[95 rows x 2 columns]
+
+Top Contributing Features per Principal Component:
+{'PC1': [26, 45, 52], 'PC2': [25, 9, 58]}
+PC1:
+----Circ._std
+----Round_mean
+----Area_inverted_mean
+PC2A:
+----Circ._mean
+----Perim._mean
+----Perim._inverted_mean
+0
+1
+2
+3
+4
+5
+6
+(39517, 114)
+Images from cluster = 0
+[1633 1463  928]
+Images from cluster = 1
+[ 6004  6811 10914]
+Images from cluster = 2
+[ 656 1123  515]
+Images from cluster = 3
+[10155 10318  5384]
+Images from cluster = 4
+[201  48 986]
+Images from cluster = 5
+[1251   32 1017]
+Images from cluster = 6
+[5046 2624  100]
