@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 import os
+import sys
 
 print("Done.")
 
@@ -24,7 +25,7 @@ file_in = "FINAL2/data/unclassified_features_39517_KM_classes_7_s42"
 with open(file_in + ".pkl", 'rb') as f:
   feats_df_large = pickle.load(f) # deserialize using load()
 
-print(feats_df_large.shape)
+print("\n", file_in, " shape: ", feats_df_large.shape)
 
 # these unclassified images are from the proper parameter range
 file_in_narrow = "FINAL2/data/unclassified_features_33770"
@@ -32,7 +33,7 @@ file_in_narrow = "FINAL2/data/unclassified_features_33770"
 with open(file_in_narrow + ".pkl", 'rb') as f:
   df_narrow = pickle.load(f)
 
-print(df_narrow.shape)
+print("\n", file_in_narrow, " shape: ", df_narrow.shape)
 
 # %%
 # Create output directories
@@ -45,11 +46,15 @@ os.makedirs(output_sub_dir, exist_ok=True)
 specific_file_dir = output_sub_dir + "Visualization_Features_Parameters/"
 os.makedirs(specific_file_dir, exist_ok=True)
 
+# save output to txt file
+sys.stdout = open(specific_file_dir +'Visualization_Features_Parameters_output.txt', 'w')  # redirect print() output
+sys.stderr = sys.stdout
+
 # %%
 feats_df = feats_df_large[feats_df_large["path"].isin(df_narrow["path"].unique())]
 feats_df.reset_index(inplace = True, drop = True)
 
-print(feats_df.shape)
+print("\nFiltered feats_df with class and narrow bounds: ", feats_df.shape)
 feats_df.head()
 
 # %%
@@ -66,7 +71,7 @@ for i in classes:
     df.reset_index(inplace = True, drop = True)
     class_dfs.append(df)
 
-    print(class_dfs[i].shape)
+    print("Images in class ", i, ": ", class_dfs[i].shape)
 
 # %%
 feats_df[feats_df.columns[13:111]].columns
@@ -97,10 +102,12 @@ fig.set_figheight(5 * num_imgs)
 # option_print = True
 if option_print:
   plt.savefig(specific_file_dir + "ClassifiedImages_RandomImagesPerClass.png", dpi = 300)
+plt.close()
 # plt.show()
 
 # %%
 # PCA on feat arrays
+print("\n\nPCA on feature arrays:")
 
 # scaling data
 from sklearn.preprocessing import StandardScaler
@@ -133,7 +140,7 @@ loadings = pd.DataFrame(pca.components_.T,
                         columns=[f'PC{i+1}' for i in range(len(pca.components_))],
                         index=feat_array_scaled.columns)
 
-print("PCA Loadings:")
+print("\nPCA Loadings:")
 print(loadings)
 
 # Find top features for each principal component
@@ -176,6 +183,7 @@ if num_PCA_components == 2:
   # option_print = True
   if option_print:
     plt.savefig(specific_file_dir + folder_name + "PCA_of_Feats_2_Components.png", dpi = 300)
+  plt.close()
   # plt.show()
 
 if num_PCA_components == 3:
@@ -228,6 +236,8 @@ if num_PCA_components == 3:
 
 # %%
 # plot the model predicted class in feature space
+print("\n\nNow plotting parameter vs parameter combinations: ")
+
 folder_name = "Parameter_vs_Parameter_By_Class/"
 os.makedirs(specific_file_dir + folder_name, exist_ok=True)
 
@@ -247,6 +257,7 @@ def plotter(feat_1,feat_2):
   # option_print = True
   if option_print:
     plt.savefig(specific_file_dir + folder_name + feat_1 + "_vs_" + feat_2 + ".png", dpi = 300)
+  plt.close()
   # plt.show()
   return
 
@@ -255,6 +266,8 @@ for p1,p2 in combinations(params, 2):
 
 # %%
 # do clusters in 3 parameters in 3D
+print("\n\nNow plotting parameter vs parameter vs parameter combinations: ")
+
 folder_name = "Parameter_vs_Parameter_vs_Parameter_By_Class/"
 os.makedirs(specific_file_dir + folder_name, exist_ok=True)
 
@@ -297,6 +310,7 @@ def threeD_plotter(feat_1,feat_2,feat_3):
     if option_print:
       plt.savefig(specific_file_dir + folder_name + feat_1 + "_vs_" + feat_2 + "_vs_" + feat_3 + ".png", dpi = 300)
       fig.write_html(specific_file_dir + folder_name + feat_1 + "_vs_" + feat_2 + "_vs_" + feat_3 + "_Interactive.html")
+    plt.close()
     # plt.show()
 
 for p1,p2,p3 in combinations(params, 3):
@@ -304,6 +318,8 @@ for p1,p2,p3 in combinations(params, 3):
 
 # %%
 # plot ratios of params
+print("\n\nNow plotting ratios of parameters: ")
+
 folder_name = "Ratios_of_Parameters_By_Class/"
 os.makedirs(specific_file_dir + folder_name, exist_ok=True)
 
@@ -328,6 +344,7 @@ def ratio_plotter(feat_1,feat_2):
   feat_2_name = feat_2.replace("/","-")
   if option_print:
     plt.savefig(specific_file_dir + folder_name + feat_1_name + "_vs_" + feat_2_name + "_Ratios.png", dpi = 300)
+  plt.close()
   # plt.show()
   return
 
@@ -361,6 +378,8 @@ feats_df.columns[116:137]
 
 # %%
 # print bar plots for each param based on class
+print("\n\nNow plotting mean feature and parameter values by class: ")
+
 folder_name = "Mean_Feat_Param_Values_By_Class/"
 os.makedirs(specific_file_dir + folder_name, exist_ok=True)
 
@@ -399,6 +418,7 @@ for i in range(len(feats)):
       param = param.replace("/","-")
       param = param + "_Ratio"
     plt.savefig(specific_file_dir + folder_name + "Mean_" + param + ".png", dpi = 300)
+  plt.close()
   # plt.show()
 
 # %%
@@ -422,6 +442,8 @@ for i in range(num_classes):
 
 # %%
 # print box plots for all 7 main params based on class 
+print("\n\nNow plotting mean scaled parameter values by class: ")
+
 feats = ['Ua_scaled', 'Ui_scaled', 'Ga_scaled', 'Gi_scaled', 'Da_scaled', 'Di_scaled', 'Ba_scaled']
 
 classes = np.arange(0,num_classes)# list of unique clusters
@@ -456,6 +478,7 @@ ax.set_xticklabels(['0','1','2','3','4','5','6'])
 # option_print = True
 if option_print:
   plt.savefig(specific_file_dir + "Mean_All_Params_Scaled_By_Class.png", dpi = 300)
+plt.close()
 # plt.show()
 
 # %%
@@ -519,6 +542,8 @@ r2_sorted[r2_sorted["feat"] == "Mean"]
 
 # %%
 # plot the model predicted class in feature space
+print("\n\nNow plotting parameters by class in the feature space: ")
+
 folder_name = "Param_By_Class_in_Feature_Space/"
 os.makedirs(specific_file_dir + folder_name, exist_ok=True)
 
@@ -547,6 +572,7 @@ for feat in image_features:
       feat_2 = feat_2.replace("/","-")
     if option_print:
       plt.savefig(specific_file_dir + folder_name + feat_1 + "_vs_" + feat_2 + ".png", dpi = 300)
+    plt.close()
     # plt.show()
 
 # %%
@@ -611,11 +637,14 @@ for i in range(num_imgs):
   # option_print = True
   # if option_print:
   #   plt.savefig(specific_file_dir + "Single_Param_Scans_Random_Images_By_Class" + str(i) + ".png", dpi = 300)
+  plt.close()
   # plt.show()
 
 
 # %%
 # plot some dependencies
+print("\n\nNow plotting features against parameters in single parameter scans: ")
+
 folder_name = "Linear_Scans_Feat_vs_Param/"
 os.makedirs(specific_file_dir + folder_name, exist_ok=True)
 
@@ -643,6 +672,7 @@ for feat in image_features:
     # option_print = True
     if option_print:
       plt.savefig(specific_file_dir + folder_name + feat + "_vs_" + keys[i] + "_SingleParamScan.png", dpi = 300)
+    plt.close()
     # plt.show()
 
 
