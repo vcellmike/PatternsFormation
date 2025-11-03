@@ -5,28 +5,40 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 import sys
+import os
 
 print("All dependencies present")
 
 # %%
 #load in dataframe
 pd.set_option('display.max_columns', None)
+
 option_print = True
 seed_val= 42
 file_in = "FINAL2/data/unclassified_features_39517"
 
-# save output to txt file
-sys.stdout = open(file_in+'_output.txt', 'w')  # redirect print() output
-sys.stderr = sys.stdout
-
 with open(file_in+'.pkl', 'rb') as f:
   feats_df = pickle.load(f) # deserialize using load()
 
-print(feats_df.shape)
+print(file_in, "shape: ", feats_df.shape)
 feats_df.head()
+
+output_dir = "FINAL2/data/output_images/"
+os.makedirs(output_dir, exist_ok=True)
+
+output_sub_dir = output_dir + file_in[11:] + "/"
+os.makedirs(output_sub_dir, exist_ok=True)
+
+specific_file_dir = output_sub_dir + "K_MeansClustering/"
+os.makedirs(specific_file_dir, exist_ok=True)
+
+# save output to txt file
+sys.stdout = open(specific_file_dir +'K_MeansClustering_output.txt', 'w')  # redirect print() output
+sys.stderr = sys.stdout
 
 # %%
 # PCA on feat arrays
+print("\n\nPCA on feature arrays")
 
 # scaling data
 from sklearn.preprocessing import StandardScaler
@@ -51,7 +63,7 @@ feats_df["pc2"] = pca_data[:,1]
 loadings = pd.DataFrame(pca.components_.T,
                         columns=[f'PC{i+1}' for i in range(len(pca.components_))],
                         index=feat_array_scaled.columns)
-print("PCA Loadings:")
+print("\nPCA Loadings:")
 print(loadings)
 
 # Find top features for each principal component
@@ -70,6 +82,8 @@ for feat in top_features["PC2"]:
 
 # %%
 # K_means clustering
+print("\n\nNow in Kmeans clustering")
+
 from sklearn.cluster import KMeans
 
 #Find optimum number of clusters
@@ -128,7 +142,7 @@ ax.set(xlabel = "PC1", ylabel = "PC2", title = "Clustering of Intuitive Features
 
 #option_print = True
 if option_print:
-  plt.savefig("FINAL2/output_images/KMeansClustering_of_Intuitive_Features_cl7.png", dpi = 300)
+  plt.savefig(specific_file_dir + "KMeansClustering_of_Intuitive_Features_cl7.png", dpi = 300)
 
 #plt.show()
 
@@ -137,10 +151,12 @@ feats_df.head()
 # %%
 # add pc1, pc2, cluster columns
 feats_df.to_pickle(file_out)
-print(feats_df.shape)
+print("\ndf shape after adding pc1, pc2, cluster columns: ", feats_df.shape)
 
 # %%
 # print image or random images for a given column in the dataframe
+print("\n\nSample images from each cluster:")
+
 def show_image(image_num = None, num_random_images = None, df = feats_df):
   if image_num is not None:
     image_path = "FINAL2" + df["dir"][image_num] + df["path"][image_num]
@@ -176,6 +192,7 @@ def col_to_print_func(col_to_print = None, num_random_images = None, image_num =
 col_to_print_func(col_to_print = "cluster", num_random_images=3)
 
 # %%
+print("\n\nPrint random images from each cluster:")
 num_imgs = 20
 
 fig, ax = plt.subplots(num_imgs, len(cluster_dfs))
@@ -196,6 +213,6 @@ fig.set_figheight(5 * num_imgs)
 
 #option_print = True
 if option_print:
-  plt.savefig("FINAL2/output_images/KMeansClustering_ImagesPerCluster_cl7_.png", dpi = 300)
+  plt.savefig(specific_file_dir + "KMeansClustering_ImagesPerCluster_cl7_.png", dpi = 300)
 
 #plt.show()
