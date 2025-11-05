@@ -142,7 +142,7 @@ ax.set(xlabel = "PC1", ylabel = "PC2", title = "Clustering of Intuitive Features
 
 #option_print = True
 if option_print:
-  plt.savefig(specific_file_dir + "KMeansClustering_of_Intuitive_Features_cl7.png", dpi = 300)
+  plt.savefig(specific_file_dir + "KMeansClustering_of_Intuitive_Features_cl" + str(num_clusters) + ".png", dpi = 300)
 
 #plt.show()
 
@@ -213,6 +213,6 @@ fig.set_figheight(5 * num_imgs)
 
 #option_print = True
 if option_print:
-  plt.savefig(specific_file_dir + "KMeansClustering_ImagesPerCluster_cl7_.png", dpi = 300)
+  plt.savefig(specific_file_dir + "KMeansClustering_ImagesPerCluster_cl" + str(num_clusters) + ".png", dpi = 300)
 
 #plt.show()
