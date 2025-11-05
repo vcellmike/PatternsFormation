@@ -12,7 +12,6 @@ print("Done.")
 # %%
 option_print = True 
 
-num_classes = 7 # number of classes in clustering
 params = ["Ua","Ui","Ga","Gi","Da","Di","Ba"] # feature parameters to use
 colors = ["red","green","blue","purple","orange","black","pink"] # colors for each class
 num_PCA_components = 2 # number of PCA components to use
@@ -58,6 +57,11 @@ print("\nFiltered feats_df with class and narrow bounds: ", feats_df.shape)
 feats_df.head()
 
 # %%
+# number of classes in clustering
+num_classes = len(feats_df["cluster"].unique()) 
+print("number of classes: ", num_classes)
+
+# %%
 classes = np.arange(0,num_classes)# list of unique clusters
 
 class_dfs = [] # list of dfs for each cluster
@@ -101,7 +105,7 @@ fig.set_figheight(5 * num_imgs)
 
 # option_print = True
 if option_print:
-  plt.savefig(specific_file_dir + "ClassifiedImages_RandomImagesPerClass.png", dpi = 300)
+  plt.savefig(specific_file_dir + "ClassifiedImages_RandomImagesPerClass_cl" + str(num_classes) + ".png", dpi = 300)
 plt.close()
 # plt.show()
 
@@ -410,7 +414,8 @@ for i in range(len(feats)):
     patch.set_facecolor(color)
     
   ax.set(title = "Mean " + param)
-  ax.set_xticklabels(['0','1','2','3','4','5','6'])
+  tick_labels = [str(i) for i in range(num_classes)]
+  ax.set_xticklabels(tick_labels)
 
   # option_print = True
   if option_print:
@@ -472,8 +477,10 @@ leg = ax.get_legend()
 for idx in range(len(colors)): 
     leg.legend_handles[idx].set_color(colors[idx])
 
-ax.set_xticks([1,4,7,10,13,16,19])
-ax.set_xticklabels(['0','1','2','3','4','5','6'])
+xticks = [1+3*i for i in range(num_classes)]
+ax.set_xticks(xticks)
+tick_labels = [str(i) for i in range(num_classes)]
+ax.set_xticklabels(tick_labels)
 
 # option_print = True
 if option_print:
