@@ -5,7 +5,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 import os
-import sys
 
 print("Done.")
 
@@ -14,12 +13,12 @@ option_print = True
 
 params = ["Ua","Ui","Ga","Gi","Da","Di","Ba"] # feature parameters to use
 colors = ["red","green","blue","purple","orange","black","pink"] # colors for each class
-num_PCA_components = 2 # number of PCA components to use
+num_PCA_components = 3 # number of PCA components to use
 
 pd.set_option('display.max_columns', None)
 
 # %%
-file_in = "FINAL2/data/unclassified_features_39517_KM_classes_7_s42"
+file_in = "FINAL2/data/unclassified_features_39517_KM_classes_5_s42"
 
 with open(file_in + ".pkl", 'rb') as f:
   feats_df_large = pickle.load(f) # deserialize using load()
@@ -39,15 +38,11 @@ print("\n", file_in_narrow, " shape: ", df_narrow.shape)
 output_dir = "FINAL2/data/output_images/"
 os.makedirs(output_dir, exist_ok=True)
 
-output_sub_dir = output_dir + file_in[11:] + "/"
+output_sub_dir = output_dir + file_in[5:] + "/"
 os.makedirs(output_sub_dir, exist_ok=True)
 
 specific_file_dir = output_sub_dir + "Visualization_Features_Parameters/"
 os.makedirs(specific_file_dir, exist_ok=True)
-
-# save output to txt file
-sys.stdout = open(specific_file_dir +'Visualization_Features_Parameters_output.txt', 'w')  # redirect print() output
-sys.stderr = sys.stdout
 
 # %%
 feats_df = feats_df_large[feats_df_large["path"].isin(df_narrow["path"].unique())]
@@ -58,8 +53,12 @@ feats_df.head()
 
 # %%
 # number of classes in clustering
-num_classes = len(feats_df["cluster"].unique()) 
-print("number of classes: ", num_classes)
+if "cluster" in feats_df.columns:
+    num_classes = len(feats_df["cluster"].unique()) 
+    print("number of classes: ", num_classes)
+else:
+    print("Warning: no column called 'cluster' in dataframe")
+    
 
 # %%
 classes = np.arange(0,num_classes)# list of unique clusters
@@ -105,9 +104,12 @@ fig.set_figheight(5 * num_imgs)
 
 # option_print = True
 if option_print:
-  plt.savefig(specific_file_dir + "ClassifiedImages_RandomImagesPerClass_cl" + str(num_classes) + ".png", dpi = 300)
-plt.close()
+  plt.savefig(specific_file_dir + "ClassifiedImages_RandomImagesPerClass_cl" + str(num_classes) + ".png", dpi = 300, bbox_inches='tight')
+  plt.close()
 # plt.show()
+
+# %%
+presentation_order = [4,0,1,2,3]
 
 # %%
 # PCA on feat arrays
@@ -144,7 +146,7 @@ loadings = pd.DataFrame(pca.components_.T,
                         columns=[f'PC{i+1}' for i in range(len(pca.components_))],
                         index=feat_array_scaled.columns)
 
-print("\nPCA Loadings:")
+print("PCA Loadings:")
 print(loadings)
 
 # Find top features for each principal component
@@ -186,9 +188,9 @@ if num_PCA_components == 2:
 
   # option_print = True
   if option_print:
-    plt.savefig(specific_file_dir + folder_name + "PCA_of_Feats_2_Components.png", dpi = 300)
-  plt.close()
-  # plt.show()
+    plt.savefig(specific_file_dir + folder_name + "PCA_of_Feats_2_Components.png", dpi = 300, bbox_inches='tight')
+    plt.close()
+  #plt.show()
 
 if num_PCA_components == 3:
   feat_3 = "pc3"
@@ -231,9 +233,9 @@ if num_PCA_components == 3:
   
   # option_print = True
   if option_print:
-    plt.savefig(specific_file_dir + folder_name + "PCA_of_Feats_3_Components.png", dpi = 300)
+    plt.savefig(specific_file_dir + folder_name + "PCA_of_Feats_3_Components.png", dpi = 300, bbox_inches='tight')
     fig.write_html(specific_file_dir + folder_name + "Interactive_Plot_PCA_of_Feats_3_Components.html")
-  # # fig.show()
+  fig.show()
 
 # %% [markdown]
 # Exploration of combos of points in 2D and 3D
@@ -250,23 +252,27 @@ from itertools import combinations
 def plotter(feat_1,feat_2):
   fig, ax = plt.subplots()
 
-  alpha = [1,0,1,0,1,1,0] # opacity of points
+  alpha = [1,1,1,0,0,1,0] # opacity of points
   for j in classes:
     df = class_dfs[j]
     ax.scatter(df[feat_1], df[feat_2], c = colors[j], label = "class " + str(j), alpha = alpha[j])
 
   leg = ax.legend(loc="upper left")
-  ax.set(xlabel = feat_1, ylabel = feat_2)
+  ax.set(title = feat_2 + " vs " + feat_1, xlabel = feat_1, ylabel = feat_2)
 
   # option_print = True
   if option_print:
     plt.savefig(specific_file_dir + folder_name + feat_1 + "_vs_" + feat_2 + ".png", dpi = 300)
-  plt.close()
-  # plt.show()
+    plt.close()
+  else:
+    plt.show()
   return
 
 for p1,p2 in combinations(params, 2):
   plotter(p1,p2)
+
+if option_print:
+  print("2D Parameter plots are saved.")
 
 # %%
 # do clusters in 3 parameters in 3D
@@ -308,17 +314,21 @@ def threeD_plotter(feat_1,feat_2,feat_3):
 
     fig = go.Figure(data=traces)
     fig.update_layout(margin=dict(l=5, r=5, b=5, t=5))
-    ## fig.show()
+    #fig.show()
     
-    # option_print = True
+    option_print = True
     if option_print:
-      plt.savefig(specific_file_dir + folder_name + feat_1 + "_vs_" + feat_2 + "_vs_" + feat_3 + ".png", dpi = 300)
+      plt.savefig(specific_file_dir + folder_name + feat_1 + "_vs_" + feat_2 + "_vs_" + feat_3 + ".png", dpi = 300, bbox_inches='tight')
       fig.write_html(specific_file_dir + folder_name + feat_1 + "_vs_" + feat_2 + "_vs_" + feat_3 + "_Interactive.html")
-    plt.close()
-    # plt.show()
+      plt.close()
+    else:
+      plt.show()
 
 for p1,p2,p3 in combinations(params, 3):
   threeD_plotter(p1,p2,p3)
+
+if option_print:
+  print("3D Parameter plots are saved.")
 
 # %%
 # plot ratios of params
@@ -347,9 +357,10 @@ def ratio_plotter(feat_1,feat_2):
   feat_1_name = feat_1.replace("/","-")
   feat_2_name = feat_2.replace("/","-")
   if option_print:
-    plt.savefig(specific_file_dir + folder_name + feat_1_name + "_vs_" + feat_2_name + "_Ratios.png", dpi = 300)
-  plt.close()
-  # plt.show()
+    plt.savefig(specific_file_dir + folder_name + feat_1_name + "_vs_" + feat_2_name + "_Ratios.png", dpi = 300, bbox_inches='tight')
+    plt.close()
+  else:
+    plt.show()
   return
 
 plot=1
@@ -376,6 +387,9 @@ for i in range(len(params)):
           counter += 1
 print(counter)
 
+if option_print:
+  print("Ratios of parameters plots are saved.")
+
 # %%
 # shows parameter ratio columns
 feats_df.columns[116:137]
@@ -400,7 +414,8 @@ for i in range(len(feats)):
   param = feats[i]
   data = []
   
-  for i, df in enumerate(class_dfs):
+  for i in presentation_order:
+    df = class_dfs[i]
     rows[str(i)] = df[param].values
     data.append(rows[str(i)])
 
@@ -414,7 +429,7 @@ for i in range(len(feats)):
     patch.set_facecolor(color)
     
   ax.set(title = "Mean " + param)
-  tick_labels = [str(i) for i in range(num_classes)]
+  tick_labels = [("class " + str(i)) for i in presentation_order]
   ax.set_xticklabels(tick_labels)
 
   # option_print = True
@@ -422,9 +437,13 @@ for i in range(len(feats)):
     if "/" in param:
       param = param.replace("/","-")
       param = param + "_Ratio"
-    plt.savefig(specific_file_dir + folder_name + "Mean_" + param + ".png", dpi = 300)
-  plt.close()
-  # plt.show()
+    plt.savefig(specific_file_dir + folder_name + "Mean_" + param + ".png", dpi = 300,  bbox_inches='tight')
+    plt.close()
+  else:
+    plt.show()
+  
+if option_print:
+  print("Mean parameter box plots are saved.")
 
 # %%
 # scale each param to plot them next to each other
@@ -454,7 +473,8 @@ feats = ['Ua_scaled', 'Ui_scaled', 'Ga_scaled', 'Gi_scaled', 'Da_scaled', 'Di_sc
 classes = np.arange(0,num_classes)# list of unique clusters
 fig, ax = plt.subplots(figsize = (12,8))
 
-for i, class_df in enumerate(class_dfs):
+for i in presentation_order:
+  class_df = class_dfs[i]
   positions = np.arange(len(feats)) * 0.35 + i*3
   data = []
 
@@ -479,14 +499,14 @@ for idx in range(len(colors)):
 
 xticks = [1+3*i for i in range(num_classes)]
 ax.set_xticks(xticks)
-tick_labels = [str(i) for i in range(num_classes)]
+tick_labels = [("class " + str(i)) for i in presentation_order]
 ax.set_xticklabels(tick_labels)
 
 # option_print = True
 if option_print:
-  plt.savefig(specific_file_dir + "Mean_All_Params_Scaled_By_Class.png", dpi = 300)
-plt.close()
-# plt.show()
+  plt.savefig(specific_file_dir + "Mean_All_Params_Scaled_By_Class.png", dpi = 300, bbox_inches="tight")
+  plt.close()
+#plt.show()
 
 # %%
 from sklearn.linear_model import LinearRegression
@@ -578,13 +598,17 @@ for feat in image_features:
     if "/" in feat_2:
       feat_2 = feat_2.replace("/","-")
     if option_print:
-      plt.savefig(specific_file_dir + folder_name + feat_1 + "_vs_" + feat_2 + ".png", dpi = 300)
-    plt.close()
-    # plt.show()
+      plt.savefig(specific_file_dir + folder_name + feat_1 + "_vs_" + feat_2 + ".png", dpi = 300, bbox_inches="tight")
+      plt.close()
+    else:
+      plt.show()
+
+if option_print:
+  print("Parameters in feature space plots are saved.")
 
 # %%
 # file that contains dataframe of features for each param value when other param values don't change; doesn't contain cluster info
-with open("FINAL2/data/single_param_scans.pkl", 'rb') as f:
+with open("data/single_param_scans.pkl", 'rb') as f:
   single_dic = pickle.load(f) # deserialize using load()
 
 # %%
@@ -616,6 +640,11 @@ for i in indices.keys():
 single_classes["Ua"].head()
 
 # %%
+print("\n\nNow printing images per parameter from single parameter scans: ")
+
+folder_name = "Single_Param_Scans_Images_By_Parameter/"
+os.makedirs(specific_file_dir + folder_name, exist_ok=True)
+
 #sort all the dfs
 for i in single_classes.keys():
   df = single_classes[i].copy()
@@ -625,27 +654,28 @@ for i in single_classes.keys():
 
 # print out random images from clusters
 num_imgs = 10
+skip = 10
 
-for i in range(num_imgs):
-  fig, ax = plt.subplots(1,len(params))
-  for j in range(len(params)):
-    df = single_classes[params[j]]
-    path = "FINAL2" + df["dir"][i] + df["path"][i]
+for i in range(len(params)):
+  fig, ax = plt.subplots(1,num_imgs)
+  for j in range(num_imgs):
+    df = single_classes[params[i]]
+    path = "FINAL2" + df["dir"][j+skip] + df["path"][j+skip]
     img = np.array(Image.open(path))
     ax[j].imshow(img, cmap = "YlOrRd", vmin = 0, vmax = 255)
-    ax[j].set_title(str(params[j]) + " = "+ str(df[params[j]][i]), fontsize = 8)
-    print(str(params[j]) + " = "+ str(df[params[j]][i]), end=", ")
+    ax[j].set_title(str(params[i]) + " = "+ str(df[params[i]][j+skip].round(4)), fontsize = 18)
+    #print(str(params[j]) + " = "+ str(df[params[j]][i].round(4)), end=", ")
     ax[j].get_xaxis().set_visible(False)
     ax[j].get_yaxis().set_visible(False)
    
   fig.set_figwidth(5*len(params))
-  fig.set_figheight(5*num_imgs)
+  fig.set_figheight(num_imgs)
 
-  # option_print = True
-  # if option_print:
-  #   plt.savefig(specific_file_dir + "Single_Param_Scans_Random_Images_By_Class" + str(i) + ".png", dpi = 300)
-  plt.close()
-  # plt.show()
+  option_print = True
+  if option_print:
+    plt.savefig(specific_file_dir + folder_name + str(params[i]) + "_Skip" + str(skip) + ".png", dpi = 300, bbox_inches="tight", pad_inches=0.5)
+    plt.close()
+  #plt.show()
 
 
 # %%
@@ -656,7 +686,6 @@ folder_name = "Linear_Scans_Feat_vs_Param/"
 os.makedirs(specific_file_dir + folder_name, exist_ok=True)
 
 keys = list(single_classes.keys())
-feat = "num_spots"
 
 # iterate through params
 for feat in image_features:
@@ -678,8 +707,12 @@ for feat in image_features:
 
     # option_print = True
     if option_print:
-      plt.savefig(specific_file_dir + folder_name + feat + "_vs_" + keys[i] + "_SingleParamScan.png", dpi = 300)
-    plt.close()
-    # plt.show()
+      plt.savefig(specific_file_dir + folder_name + feat + "_vs_" + keys[i] + "_SingleParamScan.png", dpi = 300, bbox_inches="tight")
+      plt.close()
+    else:
+      plt.show()
+
+if option_print:
+  print("Linear scans and dependencies plots are saved.")    
 
 
