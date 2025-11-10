@@ -1,0 +1,64 @@
+
+
+PCA on feature arrays
+(39517, 95)
+[0.40335025 0.24936881]
+
+PCA Loadings:
+         PC1       PC2
+0   0.063943  0.102919
+1  -0.020598 -0.123470
+2  -0.022217 -0.141839
+3  -0.120494 -0.134209
+4   0.088172 -0.078721
+..       ...       ...
+90 -0.116973  0.128303
+91  0.098154 -0.048375
+92  0.076827 -0.074302
+93  0.096977 -0.094048
+94 -0.124029  0.111705
+
+[95 rows x 2 columns]
+
+Top Contributing Features per Principal Component:
+{'PC1': [26, 45, 52], 'PC2': [25, 9, 58]}
+PC1:
+----Circ._std
+----Round_mean
+----Area_inverted_mean
+PC2A:
+----Circ._mean
+----Perim._mean
+----Perim._inverted_mean
+
+
+Now in Kmeans clustering
+0
+1
+2
+3
+4
+5
+6
+
+df shape after adding pc1, pc2, cluster columns:  (39517, 114)
+
+
+Sample images from each cluster:
+Images from cluster = 0
+[796 853 380]
+Images from cluster = 1
+[3350 3090 2934]
+Images from cluster = 2
+[ 307 1102  148]
+Images from cluster = 3
+[7631 6541  517]
+Images from cluster = 4
+[834 675 518]
+Images from cluster = 5
+[1028 1176  975]
+Images from cluster = 6
+[6934 9060 1648]
+
+
+Print random images from each cluster:
