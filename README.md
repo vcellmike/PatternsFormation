@@ -1,6 +1,6 @@
 # PatternsFormation
 
-This repo contains all material
+This repo contains all materials related to the manuscript on 
 
 ### Folders structure
 - SupplementalMaterial contains all running Jupyter Notebooks to run image classification, visualization and parameter estimation. It also contains all images simulated using Virtual Cell modeling and simulation software, dataframes with image features, dataframes with classification and PCA added, and all outputs of visualization scripts.
