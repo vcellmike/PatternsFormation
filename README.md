@@ -8,17 +8,13 @@ This repo contains all materials related to the manuscript on "Machine-Learning 
 - OlderStuff contains additional files that are not in the final manuscript version. Specifically, it has CNN classification based on manual classification.
 
 ### The Reaction-Diffusion model parameters 
-**Ua** - Degradation rate for NEGAN
-
-**Ui** - Degradation rate for RTO
-
-**Ga** - Self-activation of A by A
-
-**Gi** - Activation of I by A
-
-**Ba** - Inhibition of A by I
-**Da** - Diffusion rate of A
-**Di** - Diffusion rate of I
+- **Ua** - Degradation rate for NEGAN
+- **Ui** - Degradation rate for RTO
+- **Ga** - Self-activation of A by A
+- **Gi** - Activation of I by A
+- **Ba** - Inhibition of A by I
+- **Da** - Diffusion rate of A
+- **Di** - Diffusion rate of I
 
 
 
