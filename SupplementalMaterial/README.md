@@ -19,7 +19,7 @@ The materials here are intended to support reproducibility and inspection of the
 
 ---
 
-## `data/` folder contents
+### `data/` folder contents
 
 The `data` directory contains serialized datasets, trained model artifacts, and intermediate analysis results.  
 All files are read-only analysis outputs and should not be manually edited.
