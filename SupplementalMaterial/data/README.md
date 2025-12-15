@@ -4,7 +4,7 @@
 Dataframe describing all simulated images - image location and extracted features.
 | File | Produced by | Consumed by |
 |----|------------|-------------|
-| `unclassified_features_39517.pkl` | Feature-extraction pipeline | `K_MeansClustering.ipynb`, `NN_Classification.ipynb`, `XGBoost_simple.ipynb` |
+| `unclassified_features_39517.pkl` | Feature-extraction pipeline | `K_MeansClustering.ipynb`, `XGBoost_simple.ipynb` |
 
 ---
 
