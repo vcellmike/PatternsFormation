@@ -198,6 +198,6 @@ The underlying measurement definitions follow ImageJ/Fiji Analyze > Set Measurem
 | `Round_inverted_std`       | Standard deviation of roundness in the inverted analysis.                                  |
 | `Solidity_inverted_mean`   | Mean solidity in the inverted analysis.                                                    |
 | `Solidity_inverted_std`    | Standard deviation of solidity in the inverted analysis.                                   |
+| `full_path`                | The full path to the file                                                                  |
+| `classifier_pred_class`    | Manually classified through a classifier.                                                  |
 
-- **full_path** - The full path to the file
-- **classifier_pred_class** - Manually classified through a classifier. 
